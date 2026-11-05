@@ -1,39 +1,58 @@
-# 🌐 **Portfolio**
-**Mon site personnel : présentation de mes projets, de mon activité freelance et de mon profil de programmeur gameplay & moteur**
+# 🎮 **LevelWeb Studio**
+**Un seul site, deux fonctions : la vitrine de mon studio de jeux vidéo LevelWeb Studio, et mon portfolio**
 
-<img src="static/img/LogoWithName.png" width="280" />
+<p align="center">
+  <img src="static/img/LogoWithName.png" width="280" />
+</p>
 
 ---
 
 ## 📜 **Description du projet**
 
-Ce dépôt contient le code source de mon portfolio, un site statique (HTML/CSS/JS) que j'ai conçu et développé moi-même, sans framework.
+Ce dépôt contient un site statique (HTML/CSS/JS, sans framework), conçu et développé par mes soins, déployé sur GitHub Pages. Il remplit deux fonctions distinctes, pour deux publics différents :
 
-👉 **[hugoflandrin.github.io/Portfolio](https://hugoflandrin.github.io/Portfolio/)**
+| | **Site de l'entreprise** | **Site du portfolio** |
+|---|---|---|
+| **Où** | racine du dépôt | dossier `portfolio/` |
+| **Pour qui** | les joueurs | les recruteurs et les clients |
+| **Contenu** | vitrine de **Last Wing**, le premier jeu du studio : jouable dans le navigateur, liens PC (itch.io) et Android à venir, à propos, politique de confidentialité, mentions légales | mes projets personnels et académiques (moteurs C++, prototypes Unreal Engine et Unity), le détail technique de Last Wing et du moteur 2D, mes services freelance, mon profil de programmeur gameplay / moteur |
+| **Ton** | produit : on joue, on télécharge | technique : choix d'ingénierie, défis, stack |
 
-L'objectif est de centraliser en un seul endroit tout ce que je fais : mes projets personnels (moteurs de jeu en C++, prototypes Unreal Engine, prototypes Unity), mon activité freelance via **LevelWeb Studio**, et mon profil de programmeur gameplay / moteur.
+Les deux sites restent volontairement séparés : un joueur qui découvre le jeu ne tombe pas sur l'activité freelance, et un recruteur retrouve l'ensemble de mon travail au même endroit.
 
-C'est aussi un projet à part entière : au-delà de présenter mon travail, le site lui-même sert de démonstration concrète de mes compétences front-end (traduction FR/EN, animations, curseur personnalisé, intégration de démos jouables directement dans le navigateur).
+👉 **[hugoflandrin.github.io/LevelWeb-Studio](https://hugoflandrin.github.io/LevelWeb-Studio/)**  
+👉 **[hugoflandrin.github.io/LevelWeb-Studio/portfolio/](https://hugoflandrin.github.io/LevelWeb-Studio/portfolio/)**
+
+Le portfolio est aussi un projet à part entière : il sert de démonstration concrète de mes compétences front-end (traduction FR/EN, animations, curseur personnalisé, intégration de démos jouables directement dans le navigateur).
+
 
 ---
 
 ## 📦 **Contenu du dépôt**
 
 ```
-├── index.html                   # Page d'accueil
-├── styles.css                   # Styles de la page d'accueil
-├── pages/                       # Une page par projet, prototype ou section
-│   ├── all-work.html            # Vue d'ensemble de tous les projets
-│   ├── LevelWeb-Studio.html     # Présentation de mon activité freelance
-│   └── ...                      # Escape, Life Awake, NightLife, 2D/3D Game Engine, etc.
-├── static/
-│   ├── css/                     # Styles des pages projet
-│   ├── js/                      # Logique du site (traduction, navigation, animations, jeux embarqués)
-│   ├── img/                     # Images et captures d'écran
-│   ├── mp4/                     # Vidéos de démonstration des projets
-│   ├── game/ & shmup/           # Builds WebAssembly jouables directement dans le navigateur
-│   └── resume/                  # Mon CV
-└── 2DGameEngineDemo/            # Code source C++ du moteur 2D affiché sur le site
+├── index.html                   # Entreprise : vitrine de Last Wing
+├── about.html                   # Entreprise : à propos du studio
+├── mentions-legales.html        # Entreprise : mentions légales
+├── last-wing/privacy/           # Politique de confidentialité de Last Wing (/last-wing/privacy)
+├── static/                      # Ressources de l'entreprise
+│   ├── css/                     # studio.css, game-embed.css
+│   ├── js/                      # studio-i18n.js, game-embed.js, shmup-settings.js
+│   ├── img/
+│   └── last-wing/               # Build WebAssembly de Last Wing (UNE SEULE copie, partagée avec le portfolio)
+│
+├── portfolio/                   # Portfolio de Hugo Flandrin
+│   ├── index.html               # Accueil du portfolio
+│   ├── styles.css
+│   ├── pages/                   # Une page par projet, prototype ou section
+│   │   ├── all-work.html        # Vue d'ensemble de tous les projets
+│   │   ├── services.html        # Mes services freelance
+│   │   ├── last-wing.html       # Détail technique de Last Wing
+│   │   ├── 2d-game-engine.html  # Le moteur 2D et sa démo
+│   │   └── ...                  # Escape, Life Awake, NightLife, 3D Game Engine, etc.
+│   └── static/                  # Ressources du portfolio (css, js, img, mp4, platformer, platypus, resume)
+│
+└── 2DGameEngineDemo/            # Code source C++ du moteur 2D (hors déploiement, non suivi par git)
 ```
 
 ---
@@ -47,5 +66,3 @@ C'est aussi un projet à part entière : au-delà de présenter mon travail, le 
 
 ## 🧑‍💻 **Auteur**
 Développé et maintenu par **Hugo Flandrin**.
-
-### 🚀 **[Visiter le portfolio](https://hugoflandrin.github.io/Portfolio/)**

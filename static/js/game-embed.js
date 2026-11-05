@@ -15,7 +15,7 @@
   // Only present on pages with a "demo" entry point (home page, engine
   // page) - see showResult()'s own comment on what these are for. A single
   // button (solo and duo used to be two separate ones) since both just lead
-  // to the same Last Wing: Endless Waves project page either way.
+  // to the same Last Wing project page either way.
   const discoverBtn = document.getElementById("game-result-discover");
 
   const mobileNotice = document.getElementById("game-mobile-notice");
@@ -138,7 +138,7 @@
     isDemoContext = trigger?.dataset.gameDemo === "true";
     overlayFrameEl?.classList.toggle("is-portrait", trigger?.dataset.gameAspect === "portrait");
 
-    // The settings gear only means anything for Last Wing: Endless Waves (the only
+    // The settings gear only means anything for Last Wing (the only
     // build wired to WebBridge's ShmupSet* audio exports) - pages that can
     // also open the platformer from the same overlay (2d-game-engine.html)
     // would otherwise show a gear that silently does nothing once that
@@ -174,7 +174,7 @@
     resultPopup.classList.remove("is-open");
     resultPopup.setAttribute("aria-hidden", "true");
 
-    // Only present on pages with a settings panel (Last Wing: Endless Waves) - reset
+    // Only present on pages with a settings panel (Last Wing) - reset
     // here too so it doesn't linger visually "open" the next time this
     // overlay opens on a fresh game instance, which always boots unpaused.
     const settingsPanel = document.getElementById("game-settings-panel");
@@ -241,7 +241,7 @@
         return;
       }
       // A trigger can itself sit inside a notice (e.g. the mobile notice's
-      // own "play solo instead" fallback button - see last-wing.html) -
+      // own "try Last Wing instead" fallback button - see 2d-game-engine.html) -
       // close it so it doesn't linger on top of whatever it just opened.
       closeNotice(mobileNotice);
       closeNotice(desktopNotice);
@@ -340,6 +340,8 @@
     if (data.type === "closeEmbeddedGame") {
       closeOverlay();
     } else if (data.type === "gameOver") {
+      // The solo mode has its own end screen in the game (see the game's start screen): no popup over it.
+      if (activeSrc.includes("mode=infinite-solo")) return;
       showResult(!!data.won, Number(data.score) || 0, !!data.twoPlayer, Number(data.scoreP1) || 0, Number(data.scoreP2) || 0);
     }
   });

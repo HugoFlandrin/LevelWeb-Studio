@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape - Hugo Flandrin</title>
+    <meta name="description" content="A psychological thriller made with Unreal Engine 5 (escape-room inspired).">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hugoflandrin.github.io/LevelWeb-Studio/portfolio/pages/escape.html">
+    <meta property="og:title" content="Escape - Hugo Flandrin">
+    <meta property="og:description" content="A psychological thriller made with Unreal Engine 5 (escape-room inspired).">
+    <meta property="og:image" content="https://hugoflandrin.github.io/LevelWeb-Studio/portfolio/static/img/Escape.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Escape - Hugo Flandrin">
+    <meta name="twitter:description" content="A psychological thriller made with Unreal Engine 5 (escape-room inspired).">
+    <meta name="twitter:image" content="https://hugoflandrin.github.io/LevelWeb-Studio/portfolio/static/img/Escape.jpg">
+    <link rel="icon" type="image/png" href="../static/img/Logo.png">
+    <link rel="stylesheet" href="../static/css/project.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/game-ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body data-theme="escape">
+
+<!-- Page transition temporarily disabled — remove this comment wrapper to restore:
+<div id="page-transition" aria-hidden="true">
+    <div class="pt-badge">
+        <svg class="pt-ring" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="pt-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="240" y2="0">
+                    <stop offset="0" stop-color="#4da3ff"/>
+                    <stop offset="1" stop-color="#9966ff"/>
+                </linearGradient>
+            </defs>
+            <rect x="5" y="5" width="230" height="50" rx="25" fill="none" stroke="url(#pt-grad)" stroke-width="8"/>
+            <rect class="pt-bar" x="20" y="18" width="200" height="24" rx="12" fill="url(#pt-grad)"/>
+        </svg>
+    </div>
+</div>
+-->
+
+<nav class="navbar">
+    <button class="nav-toggle" type="button" aria-controls="nav-menu" aria-expanded="false" data-i18n-aria-label="nav.menuToggle" data-nav-toggle>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+    </button>
+            <div class="nav-links" id="nav-menu">
+            <a href="../index.html" class="nav-link" data-i18n="nav.home">Home</a>
+            <a href="all-work.html" class="nav-link" data-i18n="nav.projects">Projects</a>
+            <a href="services.html" class="nav-link" data-i18n="nav.freelance">Services</a>
+            <a href="../../index.html" class="nav-link" data-i18n="nav.studio">LevelWeb Studio</a>
+            <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
+        </div>
+</nav>
+
+<div class="project-container section-reveal">
+
+    <div class="project-left">
+
+        <h1>Escape</h1>
+
+        <p class="subtitle" data-i18n="project.escape.subtitle">
+           A psychological thriller made with Unreal Engine 5 (escape-room inspired).
+        </p>
+
+        <p data-i18n="project.escape.description">
+            Escape is a first-person thriller blending exploration, tension, and puzzle-solving. You wake up in a dark room with only a flickering flashlight.
+            To survive, you must investigate, solve escape room-style puzzles, and uncover fragments of the story before time runs out.
+        </p>
+
+        <div class="tech-badges-row">
+            <span class="tech-badge">Unreal Engine 5</span>
+            <span class="tech-badge">Blueprint</span>
+            <span class="tech-badge">C++</span>
+            <span class="tech-badge">Gameplay</span>
+        </div>
+
+        <h2 data-i18n="project.tech.title">Technical focus</h2>
+        <p class="tech-note" data-i18n="project.escape.tech.note">
+            Gameplay systems prioritize readable interaction in low light: flashlight-driven exploration, inspectable objects, and puzzle gates tied to narrative beats.
+        </p>
+
+        <h2 data-i18n="project.decisions.title">Key decisions</h2>
+        <ul>
+            <li data-i18n="project.escape.decision1">Implicit time pressure via audio/visual cues instead of on-screen timers</li>
+            <li data-i18n="project.escape.decision2">Modular puzzle actors with shared interaction interface</li>
+            <li data-i18n="project.escape.decision3">Lighting volumes tuned per room for consistent readability</li>
+        </ul>
+
+        <h2 data-i18n="project.workflow.title">Workflow</h2>
+        <p data-i18n="project.escape.workflow">Blockout → gameplay pass → lighting/audio polish → playtest for puzzle clarity and pacing.</p>
+
+        <h2 data-i18n="project.challenges">Challenges</h2>
+        <p class="highlight" data-i18n="project.escape.challengeHighlight">
+            Atmosphere above all: lighting, sound, and pacing needed to support tension while keeping puzzles readable.
+        </p>
+
+        <ul>
+            <li data-i18n="project.escape.challenge1">Maintaining clarity in a dark environment (flashlight-driven exploration)</li>
+            <li data-i18n="project.escape.challenge2">Designing puzzle progression that reveals story beats</li>
+            <li data-i18n="project.escape.challenge3">Time-pressure mechanic that increases tension without explicit timers</li>
+        </ul>
+
+        <h2 data-i18n="project.whatBuilt">What I built</h2>
+        <ul>
+            <li data-i18n="project.escape.built1">First-person exploration with flashlight-based navigation</li>
+            <li data-i18n="project.escape.built2">Escape room-style puzzles tied to investigation and story</li>
+            <li data-i18n="project.escape.built3">Unsettling ambiance and tension-driven pacing</li>
+        </ul>
+
+        <h2 data-i18n="project.technologies">Technologies used</h2>
+        <ul>
+            <li>Unreal Engine 5</li>
+            <li>Blueprint / C++ (Unreal)</li>
+        </ul>
+
+        <h2 data-i18n="project.links">Links</h2>
+        <div class="links">
+            <a href="https://github.com/HugoFlandrin/Escape" target="_blank" rel="noopener noreferrer" data-i18n="project.github">GitHub</a>
+            <a href="https://hugoflandrin.itch.io/escape" target="_blank" rel="noopener noreferrer" data-i18n="project.itch">Itch.io</a>
+        </div>
+
+    </div>
+
+    <div class="project-right">
+        <div class="media-images">
+
+            <figure class="media-item">
+                <img src="../static/img/Escape.jpg" alt="Escape screenshot 1">
+            </figure>
+
+            <figure class="media-item">
+                <img src="../static/img/Escape2.jpg" alt="Escape screenshot 2">
+            </figure>
+        </div>
+
+        <div class="media-video">
+            <div class="video-viewer">
+                <div class="video-slide active">
+                    <video controls preload="none" poster="../static/img/Escape.jpg">
+                        <source src="../static/mp4/Projects/Escape%20-%20DemoDev.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <button class="prev-video" type="button" aria-label="Previous video">&#10094;</button>
+                <button class="next-video" type="button" aria-label="Next video">&#10095;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-links">
+            <a href="../static/resume/Hugo_Flandrin_Resume.pdf" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.resume">Resume</a>
+            <a href="https://github.com/HugoFlandrin" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/hugo-flandrin-104476294/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://hugoflandrin.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a>
+        </div>
+        <p class="footer-meta">
+            <span data-i18n="home.footer.version">Portfolio v1.6</span>
+            ·
+            <span data-i18n="home.footer.updated">Updated November 2026</span>
+        </p>
+    </div>
+</footer>
+
+<div id="image-modal" aria-hidden="true">
+    <img id="modal-img" alt="Expanded screenshot">
+</div>
+
+<script src="../static/js/i18n.js"></script>
+<script src="../static/js/section-reveal.js"></script>
+<script src="../static/js/navbar.js"></script>
+<script src="../static/js/project.js"></script>
+<script data-goatcounter="https://levelweb-studio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script src="../static/js/game-ui.js"></script>
+
+</body>
+</html>

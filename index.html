@@ -3,414 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hugo Flandrin - Gameplay & Engine Programmer</title>
-    <meta name="description" content="Gameplay & Engine Programmer portfolio - C++, custom engines, Unreal Engine, Unity, and web development projects.">
+    <title>LevelWeb Studio - Last Wing</title>
+    <meta name="description" content="LevelWeb Studio is an indie game studio. Last Wing, a fast arcade shoot-'em-up, is coming to PC, Android and Web.">
     <meta name="google-site-verification" content="NpNX3MnSI_QO6_frLAZRm5vDmziQO7hsr7xYl9e6-qY" />
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hugoflandrin.github.io/Portfolio/">
-    <meta property="og:title" content="Hugo Flandrin - Gameplay & Engine Programmer">
-    <meta property="og:description" content="Gameplay & Engine Programmer portfolio - C++, custom engines, Unreal Engine, Unity, and web development projects.">
-    <meta property="og:image" content="https://hugoflandrin.github.io/Portfolio/static/img/AboutMe.jpg">
+    <meta property="og:title" content="LevelWeb Studio - Last Wing">
+    <meta property="og:description" content="LevelWeb Studio is an indie game studio. Last Wing, a fast arcade shoot-'em-up, is coming to PC, Android and Web.">
+    <meta property="og:image" content="static/img/LastWing.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hugo Flandrin - Gameplay & Engine Programmer">
-    <meta name="twitter:description" content="Gameplay & Engine Programmer portfolio - C++, custom engines, Unreal Engine, Unity, and web development projects.">
-    <meta name="twitter:image" content="https://hugoflandrin.github.io/Portfolio/static/img/AboutMe.jpg">
     <link rel="icon" type="image/png" href="static/img/Logo.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="static/css/studio.css">
     <link rel="stylesheet" href="static/css/game-embed.css">
-    <link rel="stylesheet" href="static/css/game-ui.css">
-    <!-- Companion temporarily disabled — re-add to bring it back:
-    <link rel="stylesheet" href="static/css/companion.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="home-page">
-    <!-- Page transition temporarily disabled — remove this comment wrapper to restore:
-    <div id="page-transition" aria-hidden="true">
-        <div class="pt-badge">
-            <svg class="pt-ring" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="pt-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="240" y2="0">
-                        <stop offset="0" stop-color="#4da3ff"/>
-                        <stop offset="1" stop-color="#9966ff"/>
-                    </linearGradient>
-                </defs>
-                <rect x="5" y="5" width="230" height="50" rx="25" fill="none" stroke="url(#pt-grad)" stroke-width="8"/>
-                <rect class="pt-bar" x="20" y="18" width="200" height="24" rx="12" fill="url(#pt-grad)"/>
-            </svg>
-        </div>
-    </div>
-    -->
+<body>
 
-    <nav class="navbar">
-        <button class="nav-toggle" type="button" aria-controls="nav-menu" aria-expanded="false" data-i18n-aria-label="nav.menuToggle" data-nav-toggle>
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-        </button>
-                        <div class="nav-links" id="nav-menu">
-            <a href="#top" class="nav-link" data-i18n="nav.home">Home</a>
-            <a href="pages/all-work.html" class="nav-link" data-i18n="nav.projects">Projects</a>
-            <a href="pages/LevelWeb-Studio.html" class="nav-link" data-i18n="nav.freelance">LevelWeb-Studio</a>
+<header class="studio-header">
+    <div class="container studio-header-inner">
+        <a href="index.html" class="studio-brand">
+            <img src="static/img/Logo.png" alt="">
+            <span>LevelWeb Studio<small data-i18n="studio.tagline">Indie game studio</small></span>
+        </a>
+        <nav class="studio-nav">
+            <a href="about.html" data-i18n="nav.about">About</a>
             <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
+        </nav>
+    </div>
+</header>
+
+<main class="main-grow">
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="eyebrow" data-i18n="hero.eyebrow">Our first game</span>
+                <h1>Last Wing</h1>
+                <p class="hero-lead" data-i18n="hero.lead">
+                    A fast, arcade vertical shoot-'em-up. Survive endless waves of enemies, grab boosts and chase the high score - solo, or with a friend in 2-player co-op on PC.
+                </p>
+                <div class="hero-actions">
+                    <button type="button" class="play-project-button" data-game-trigger data-game-src="static/last-wing/index.html?mode=infinite-solo" data-game-aspect="portrait">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <span data-i18n="hero.playSolo">Play in your browser</span>
+                    </button>
+                </div>
+            </div>
+            <button type="button" class="hero-art" data-game-trigger data-game-src="static/last-wing/index.html?mode=infinite-solo" data-game-aspect="portrait">
+                <img src="static/img/LastWing.png" alt="Last Wing - click or tap to play">
+                <span class="play-badge" aria-hidden="true">
+                    <span class="play-circle">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                    <span class="play-text" data-i18n="hero.playCue">Click or tap to play</span>
+                </span>
+            </button>
         </div>
-    </nav>
+    </section>
 
-    <aside class="home-side-nav" aria-label="Section navigation">
-        <button type="button" class="home-side-link is-active" data-target="#top"><span data-i18n="nav.side.home">Home</span></button>
-        <button type="button" class="home-side-link" data-target="#featured"><span data-i18n="nav.side.featured">Featured Project</span></button>
-        <button type="button" class="home-side-link" data-target="#experience"><span data-i18n="nav.side.experience">Experience</span></button>
-        <button type="button" class="home-side-link" data-target="#projects"><span data-i18n="nav.side.projects">My projects</span></button>
-        <button type="button" class="home-side-link" data-target="#contact"><span data-i18n="nav.side.contact">Contact</span></button>
-    </aside>
-
-    <main id="top">
-        <section class="hero-section section-reveal">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-text">
-                        <p class="hero-eyebrow" data-i18n="home.hero.eyebrow">Gameplay & Engine Programmer</p>
-                        <h1 class="hero-title">Hugo Flandrin</h1>
-                        <p class="hero-lead" data-i18n="home.hero.lead">
-                            I build modular gameplay systems and engine foundations in C++, with hands-on experience on custom engines, Unreal Engine, and Unity.
-                        </p>
-                        <div class="tech-badges" aria-label="Core technologies">
-                            <span class="badge">C++</span>
-                            <span class="badge">C#</span>
-                            <span class="badge">Unreal Engine</span>
-                            <span class="badge">Unity</span>
-                            <span class="badge">SFML</span>
-                            <span class="badge">Box2D</span>
-                        </div>
-                        <div class="hero-cta">
-                            <a href="static/resume/Hugo_Flandrin_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.resume">View Resume</a>
-                            <a href="https://github.com/HugoFlandrin" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.github">GitHub</a>
-                            <a href="https://www.linkedin.com/in/hugo-flandrin-104476294/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.linkedin">LinkedIn</a>
-                            <a href="https://hugoflandrin.itch.io/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.itch">Itch.io</a>
-                            <a href="pages/LevelWeb-Studio.html" class="btn btn-outline" data-i18n="home.cta.freelance">My freelance activity</a>
-                        </div>
-                    </div>
-                    <div class="hero-visual">
-                        <div class="profile-image hero-profile">
-                            <div class="coin-flipper">
-                                <div class="coin-face coin-face-front">
-                                    <img src="static/img/AboutMe.jpg" alt="Hugo Flandrin">
-                                </div>
-                                <div class="coin-face coin-face-back">
-                                    <img src="static/img/LogoWithName.png" alt="LevelWeb-Studio logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="status-strip section-reveal">
-            <div class="container">
-                <div class="status-card">
-                    <span class="status-label" data-i18n="home.status.label">Developer · Open to collaboration</span>
-                    <p class="status-text" data-i18n="home.status.text">
-                        I am already building and shipping projects in Gameplay, Engine, and Generalist Programming. If you have an interesting project, let’s talk !
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="featured-section section-reveal" id="featured">
-            <div class="container">
-                <div class="section-header">
-                    <h2 data-i18n="home.featured.title">Featured project</h2>
-                </div>
-                <article class="featured-card">
-                    <a href="pages/last-wing.html" class="featured-media" id="featured-play-trigger" data-game-trigger data-game-src="static/last-wing/index.html?mode=score" data-game-aspect="portrait" data-game-demo="true">
-                        <img class="featured-media-img--desktop" src="static/img/LastWing.png" alt="Last Wing demo - click or tap to play">
-                        <img class="featured-media-img--mobile" src="static/img/LastWing.png" alt="Last Wing demo - click or tap to play">
-                        <span class="featured-tag" data-i18n="home.featured.tag">Engine · C++ · SFML · Box2D</span>
-                        <span class="featured-play-badge" aria-hidden="true">
-                            <span class="featured-play-circle">
-                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </span>
-                            <span class="featured-play-text" data-i18n="home.featured.playCue">Cliquer ou toucher pour jouer</span>
-                        </span>
-                    </a>
-                    <div class="featured-body">
-                        <h3>2D Game Engine</h3>
-                        <p class="featured-summary" data-i18n="home.featured.summary">
-                            Custom C++ engine with modular systems (game loop, scenes, rendering, physics), showcased through Last Wing - a full 2-player co-op shoot-em-up. Playable directly in your browser, on desktop and mobile - just click the screenshot.
-                        </p>
-                        <ul class="featured-points">
-                            <li data-i18n="home.featured.point1">Deterministic update order & scene transitions</li>
-                            <li data-i18n="home.featured.point2">Box2D integrated with gameplay entities</li>
-                            <li data-i18n="home.featured.point3">Architecture designed for maintainable engine growth</li>
-                        </ul>
-                        <a href="pages/2d-game-engine.html" class="btn btn-primary" data-i18n="home.featured.cta">Explore technical breakdown</a>
-                    </div>
+    <section class="section">
+        <div class="container">
+            <h2 data-i18n="platforms.title">Where to play</h2>
+            <div class="platform-grid">
+                <article class="platform-card">
+                    <h3 data-i18n="platforms.web.name">Web</h3>
+                    <span class="platform-price" data-i18n="platforms.web.price">Free</span>
+                    <p data-i18n="platforms.web.body">Play instantly in your browser, nothing to install.</p>
+                    <button type="button" class="play-project-button" data-game-trigger data-game-src="static/last-wing/index.html?mode=infinite-solo" data-game-aspect="portrait">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <span data-i18n="platforms.web.cta">Play now</span>
+                    </button>
+                </article>
+                <article class="platform-card">
+                    <h3 data-i18n="platforms.pc.name">PC</h3>
+                    <span class="platform-price" data-i18n="platforms.pc.price">€2.99</span>
+                    <p data-i18n="platforms.pc.body">Full version on itch.io.</p>
+                    <span class="platform-status" data-i18n="platforms.pc.cta">Coming soon</span>
+                </article>
+                <article class="platform-card">
+                    <h3 data-i18n="platforms.android.name">Android</h3>
+                    <span class="platform-price" data-i18n="platforms.android.price">Free, with ads</span>
+                    <p data-i18n="platforms.android.body">Full version for Android phones and tablets.</p>
+                    <span class="platform-status" data-i18n="platforms.android.cta">Coming soon</span>
                 </article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="experience-section section-reveal" id="experience">
-            <div class="container">
-                <div class="section-header">
-                    <h2 data-i18n="home.experience.title">Professional experience</h2>
-                </div>
-                <div class="experience-grid">
-                    <article class="experience-card">
-                        <div class="experience-meta">
-                            <span class="experience-type" data-i18n="home.exp1.type">Freelance</span>
-                            <span class="experience-period" data-i18n="home.exp1.period">2025 - Present</span>
-                        </div>
-                        <h3><a href="pages/LevelWeb-Studio.html" data-i18n="home.exp1.role">Web & Game Development - Freelance</a></h3>
-                        <p class="experience-tech">HTML · CSS · JS · Go · ASP.NET Core · C# · Git</p>
-                        <ul>
-                            <li data-i18n="home.exp1.item1">Ongoing front-end, back-end & SQL maintenance on a client's production website</li>
-                            <li data-i18n="home.exp1.item2">Full site rebuild on a modern stack (ASP.NET Core), completed as an internship</li>
-                        </ul>
-                    </article>
-                    <article class="experience-card">
-                        <div class="experience-meta">
-                            <span class="experience-type" data-i18n="home.exp2.type">Academic / Personal</span>
-                            <span class="experience-period" data-i18n="home.exp2.period">2023 - Present</span>
-                        </div>
-                        <h3><a href="pages/2d-game-engine.html" data-i18n="home.exp2.role">Gameplay & Engine Projects - Solo Developer</a></h3>
-                        <p class="experience-tech">C++ · Unreal · Unity · SFML · Box2D</p>
-                        <ul>
-                            <li data-i18n="home.exp2.item1">Designed and implemented a modular 2D game engine (SFML + Box2D)</li>
-                            <li data-i18n="home.exp2.item2">Shipped Last Wing, a full shoot-em-up with 2-player co-op, compiled to WebAssembly</li>
-                            <li data-i18n="home.exp2.item3">Owned technical architecture decisions, debugging, and milestone delivery</li>
-                        </ul>
-                    </article>
-                    <article class="experience-card">
-                        <div class="experience-meta">
-                            <span class="experience-type" data-i18n="home.exp3.type">University</span>
-                            <span class="experience-period" data-i18n="home.exp3.period">Oct 2025 - May 2026</span>
-                        </div>
-                        <h3><a href="pages/lifeawake.html" data-i18n="home.exp3.role">Life Awake - Gameplay Programmer</a></h3>
-                        <p class="experience-tech">Unreal Engine 5.6 · Blueprint · Team of 9</p>
-                        <ul>
-                            <li data-i18n="home.exp3.item1">Designing worlds distinct and recognizable enough to feel varied, without breaking the game's overall coherence</li>
-                            <li data-i18n="home.exp3.item2">Puzzle and trial systems: rotating valves, light-reflection puzzles, and telescope observation</li>
-                            <li data-i18n="home.exp3.item3">Portal traversal connecting the game's distinct worlds</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects-section section-reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 data-i18n="home.projects.title">Projects</h2>
-                </div>
-                <div class="projects-grid">
-                    <article class="project-card" style="--accent:#3b82f6">
-                        <a href="pages/2d-game-engine.html" class="project-card-link">
-                            <div class="project-image">
-                                <img src="static/img/2DGameEngineDemo.png" alt="2D Game Engine">
-                                <span class="project-card-enter" data-i18n="home.card.enter">▶ SEE</span>
-                            </div>
-                            <div class="project-title">
-                                <span class="project-tag" data-i18n="home.card.engine.tag">Engine</span>
-                                <h3>2D Game Engine</h3>
-                                <p class="project-card-summary" data-i18n="home.card.engine.summary">C++ · SFML · Box2D · modular architecture</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card" style="--accent:#ff4d4d">
-                        <a href="pages/escape.html" class="project-card-link">
-                            <div class="project-image">
-                                <img src="static/img/Escape.jpg" alt="Escape">
-                                <span class="project-card-enter" data-i18n="home.card.enter">▶ SEE</span>
-                            </div>
-                            <div class="project-title">
-                                <span class="project-tag" data-i18n="home.card.escape.tag">Gameplay · UE5</span>
-                                <h3>Escape</h3>
-                                <p class="project-card-summary" data-i18n="home.card.escape.summary">First-person thriller · puzzles · atmosphere</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card" style="--accent:#22d3ee">
-                        <a href="pages/3d-game-engine.html" class="project-card-link">
-                            <div class="project-image">
-                                <img src="static/img/3DGameEngine.jpg" alt="3D Game Engine">
-                                <span class="project-card-enter" data-i18n="home.card.enter">▶ SEE</span>
-                            </div>
-                            <div class="project-title">
-                                <span class="project-tag" data-i18n="home.card.engine3d.tag">Engine · 3D</span>
-                                <h3>3D Game Engine</h3>
-                                <p class="project-card-summary" data-i18n="home.card.engine3d.summary">C++ · OpenGL · lighting · model loading</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card" style="--accent:#fdba74">
-                        <a href="pages/last-wing.html" class="project-card-link">
-                            <div class="project-image">
-                                <img src="static/img/LastWingCoop.png" alt="Last Wing">
-                                <span class="project-card-enter" data-i18n="home.card.enter">▶ SEE</span>
-                            </div>
-                            <div class="project-title">
-                                <span class="project-tag" data-i18n="home.card.shmup.tag">Gameplay · C++ · Web port</span>
-                                <h3>Last Wing</h3>
-                                <p class="project-card-summary" data-i18n="home.card.shmup.summary">2-player co-op · infinite survival mode</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card" style="--accent:#a78bfa">
-                        <a href="pages/gametalk.html" class="project-card-link">
-                            <div class="project-image">
-                                <img src="static/img/Gametalk.jpg" alt="Gametalk">
-                                <span class="project-card-enter" data-i18n="home.card.enter">▶ SEE</span>
-                            </div>
-                            <div class="project-title">
-                                <span class="project-tag" data-i18n="home.card.gametalk.tag">Full-stack · Go</span>
-                                <h3>Gametalk</h3>
-                                <p class="project-card-summary" data-i18n="home.card.gametalk.summary">API + server · forum systems</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="project-card" style="--accent:#8ed45a">
-                        <a href="pages/lifeawake.html" class="project-card-link">
-                            <div class="project-image">
-                                <img src="static/img/LifeAwakeLevelDemo.jpg" alt="Life Awake">
-                                <span class="project-card-enter" data-i18n="home.card.enter">▶ SEE</span>
-                            </div>
-                            <div class="project-title">
-                                <span class="project-tag" data-i18n="home.card.lifeawake.tag">Puzzle · UE5</span>
-                                <h3>Life Awake</h3>
-                                <p class="project-card-summary" data-i18n="home.card.lifeawake.summary">3D puzzle-adventure · portals &amp; puzzles</p>
-                            </div>
-                        </a>
-                    </article>
-                </div>
-                <div class="projects-cta">
-                    <a href="pages/all-work.html" class="btn btn-primary btn-lg" data-i18n="home.projects.viewAll">View all my work</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section section-reveal" id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2 data-i18n="home.contact.title">Contact</h2>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/mkgjydkg" method="POST" id="contactForm">
-                    <div class="form-group">
-                        <label for="name" data-i18n="home.contact.name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" data-i18n="home.contact.email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" data-i18n="home.contact.message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button" data-i18n="home.contact.send">Send</button>
-                    <p id="formMessage" class="form-message" hidden></p>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-links">
-                <a href="static/resume/Hugo_Flandrin_Resume.pdf" target="_blank" rel="noopener noreferrer" data-i18n="home.cta.resume">Resume</a>
-                <a href="https://github.com/HugoFlandrin" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/hugo-flandrin-104476294/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://hugoflandrin.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a>
-            </div>
-            <p class="footer-meta">
-                <span data-i18n="home.footer.version">Portfolio v1.5</span>
-                ·
-                <span data-i18n="home.footer.updated">Updated October 2026</span>
+    <section class="section credits">
+        <div class="container">
+            <h2 data-i18n="credits.title">Credits</h2>
+            <p data-i18n-html="credits.music">
+                All the music in the game comes from Clement Panchout and his <a href="https://clement-panchout.itch.io/yet-another-free-music-pack" target="_blank" rel="noopener noreferrer">Yet Another Free Music Pack</a>.
             </p>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <div id="game-overlay" aria-hidden="true">
-        <div class="game-overlay-frame">
-            <button type="button" class="game-overlay-close" id="game-overlay-close" aria-label="Close game">✕</button>
-            <button type="button" class="game-overlay-settings" id="game-settings-toggle" data-i18n-aria-label="project.shmup.settingsAriaLabel" aria-label="Audio settings">
-                <svg viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
-            </button>
-            <div id="game-settings-panel" aria-hidden="true">
-                <h3 data-i18n="project.shmup.settingsTitle">Audio settings</h3>
-                <div class="settings-row">
-                    <label for="music-volume" data-i18n="project.shmup.musicLabel">Music</label>
-                    <input type="range" id="music-volume" min="0" max="100" value="50">
-                    <button type="button" class="settings-mute-btn" id="music-mute" aria-pressed="false" data-level="1" data-i18n-aria-label="project.shmup.muteMusicAriaLabel" aria-label="Mute music">
-                        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><rect class="vol-bar-1" x="14.5" y="8.5" width="2.4" height="7" rx="1.2"/><rect class="vol-bar-2" x="18.5" y="5.5" width="2.4" height="13" rx="1.2"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(45 18.5 12)"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(-45 18.5 12)"/></svg>
-                    </button>
-                </div>
-                <div class="settings-row">
-                    <label for="sfx-volume" data-i18n="project.shmup.sfxLabel">Sound effects</label>
-                    <input type="range" id="sfx-volume" min="0" max="100" value="50">
-                    <button type="button" class="settings-mute-btn" id="sfx-mute" aria-pressed="false" data-level="1" data-i18n-aria-label="project.shmup.muteSfxAriaLabel" aria-label="Mute sound effects">
-                        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><rect class="vol-bar-1" x="14.5" y="8.5" width="2.4" height="7" rx="1.2"/><rect class="vol-bar-2" x="18.5" y="5.5" width="2.4" height="13" rx="1.2"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(45 18.5 12)"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(-45 18.5 12)"/></svg>
-                    </button>
-                </div>
+<footer class="studio-footer">
+    <div class="container studio-footer-inner">
+        <div class="footer-links">
+            <a href="about.html" data-i18n="footer.about">About</a>
+            <a href="last-wing/privacy/" data-i18n="footer.privacy">Privacy policy</a>
+            <a href="mentions-legales.html" data-i18n="footer.legal">Legal notice</a>
+        </div>
+        <a href="portfolio/index.html" data-i18n="footer.dev">Developed by Hugo Flandrin</a>
+    </div>
+</footer>
+
+<div id="game-overlay" aria-hidden="true">
+    <div class="game-overlay-frame">
+        <button type="button" class="game-overlay-close" id="game-overlay-close" aria-label="Close game">✕</button>
+        <button type="button" class="game-overlay-settings" id="game-settings-toggle" data-i18n-aria-label="project.shmup.settingsAriaLabel" aria-label="Audio settings">
+            <img alt="" src="static/img/settings-gear.png">
+        </button>
+        <div id="game-settings-panel" aria-hidden="true">
+            <h3 data-i18n="project.shmup.settingsTitle">Audio settings</h3>
+            <div class="settings-row">
+                <label for="music-volume" data-i18n="project.shmup.musicLabel">Music</label>
+                <input type="range" id="music-volume" min="0" max="100" value="50">
+                <button type="button" class="settings-mute-btn" id="music-mute" aria-pressed="false" data-level="1" data-i18n-aria-label="project.shmup.muteMusicAriaLabel" aria-label="Mute music">
+                    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><rect class="vol-bar-1" x="14.5" y="8.5" width="2.4" height="7" rx="1.2"/><rect class="vol-bar-2" x="18.5" y="5.5" width="2.4" height="13" rx="1.2"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(45 18.5 12)"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(-45 18.5 12)"/></svg>
+                </button>
             </div>
-            <div id="game-settings-backdrop"></div>
-            <iframe id="game-frame" title="2D Game Engine - playable demo"></iframe>
+            <div class="settings-row">
+                <label for="sfx-volume" data-i18n="project.shmup.sfxLabel">Sound effects</label>
+                <input type="range" id="sfx-volume" min="0" max="100" value="50">
+                <button type="button" class="settings-mute-btn" id="sfx-mute" aria-pressed="false" data-level="1" data-i18n-aria-label="project.shmup.muteSfxAriaLabel" aria-label="Mute sound effects">
+                    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><rect class="vol-bar-1" x="14.5" y="8.5" width="2.4" height="7" rx="1.2"/><rect class="vol-bar-2" x="18.5" y="5.5" width="2.4" height="13" rx="1.2"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(45 18.5 12)"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(-45 18.5 12)"/></svg>
+                </button>
+            </div>
+            <div class="settings-row players-row" id="game-players-row">
+                <button type="button" id="game-players-btn" class="players-btn" data-i18n="project.shmup.addPlayer">Add a player</button>
+                <button type="button" id="game-players-info" class="players-info" data-i18n-aria-label="project.shmup.playersInfo" aria-label="About the 2-player mode">i</button>
+            </div>
+        </div>
+        <div id="game-settings-backdrop"></div>
+        <iframe id="game-frame" title="Last Wing - playable game"></iframe>
+    </div>
+</div>
+
+<div id="game-players-dialog" role="dialog" aria-modal="true">
+    <div class="card">
+        <h3 id="game-players-dialog-title"></h3>
+        <div id="game-players-dialog-body"></div>
+        <button type="button" class="close" id="game-players-dialog-close" data-i18n="home.featured.closeGame">Close</button>
+    </div>
+</div>
+
+<div id="game-result-popup" aria-hidden="true">
+    <div class="game-result-card">
+        <h3 id="game-result-title"></h3>
+        <p id="game-result-score"></p>
+        <div class="game-result-actions">
+            <button type="button" class="btn btn-primary" id="game-result-retry" data-i18n="home.featured.playAgain">Play again</button>
+            <button type="button" class="btn btn-secondary" id="game-result-close" data-i18n="home.featured.closeGame">Close</button>
         </div>
     </div>
+</div>
 
-    <div id="game-result-popup" aria-hidden="true">
-        <div class="game-result-card">
-            <h3 id="game-result-title"></h3>
-            <p id="game-result-score"></p>
-            <div class="game-result-actions">
-                <button type="button" class="btn btn-primary" id="game-result-retry" data-i18n="home.featured.playAgain">Play again</button>
-                <a href="pages/last-wing.html" class="btn btn-primary" id="game-result-discover" hidden data-i18n="home.featured.discoverGame">Discover Last Wing</a>
-                <button type="button" class="btn btn-secondary" id="game-result-close" data-i18n="home.featured.closeGame">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="static/js/i18n.js"></script>
-    <script src="static/js/navbar.js"></script>
-    <script src="static/js/section-reveal.js"></script>
-    <script src="static/js/coin-flip.js"></script>
-    <script src="static/js/game-embed.js"></script>
-    <script src="static/js/shmup-settings.js"></script>
-    <script data-goatcounter="https://levelweb-studio.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-    <script src="static/js/game-ui.js"></script>
-    <!-- Companion temporarily disabled — re-add to bring it back:
-    <script src="static/js/companion.js"></script> -->
-    <script>
-        document.getElementById("contactForm").addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const form = e.target;
-            const data = new FormData(form);
-            const messageEl = document.getElementById("formMessage");
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: { Accept: "application/json" },
-                });
-
-                if (response.ok) {
-                    messageEl.hidden = false;
-                    messageEl.style.color = "lightgreen";
-                    messageEl.textContent = `✅ ${window.__i18n?.t("home.contact.sent") ?? "Your message has been sent!"}`;
-                    form.reset();
-                } else {
-                    const result = await response.json();
-                    throw new Error(result.error || "An error occurred.");
-                }
-            } catch (err) {
-                messageEl.hidden = false;
-                messageEl.style.color = "salmon";
-                const prefix = window.__i18n?.t("home.contact.fail") ?? "Failed to send message:";
-                messageEl.textContent = `❌ ${prefix} ${err.message}`;
-            }
-        });
-    </script>
+<script src="static/js/studio-i18n.js"></script>
+<script src="static/js/game-embed.js"></script>
+<script src="static/js/shmup-settings.js"></script>
 </body>
 </html>

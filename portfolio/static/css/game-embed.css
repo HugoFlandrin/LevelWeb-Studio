@@ -1,0 +1,512 @@
+
+#game-overlay {
+    display: flex;
+    position: fixed;
+    z-index: 3000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 3, 8, 0.92);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+    padding: 32px;
+}
+
+#game-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.game-overlay-frame {
+    position: relative;
+    /* Width alone (with a plain max-height alongside aspect-ratio) isn't
+       enough on short viewports: when the max-height clamp kicks in, the
+       browser shrinks height but does NOT shrink width back down to match
+       (aspect-ratio doesn't re-resolve a definite width), leaving the frame
+       measurably wider than true 16:9 for its clamped height. The game then
+       requests a canvas at that slightly-too-wide size, and its own camera
+       letterboxes to compensate - showing as thin black bars down the
+       sides. Folding the max-height limit into the width formula itself
+       (third min() argument: the width that exactly fills that height at
+       this ratio) means aspect-ratio only ever has to grow height to match
+       an already-correct width, so it can never end up over-wide.
+    */
+    width: min(1280px, 100%, calc((100vh - 64px) * 16 / 9));
+    max-height: calc(100vh - 64px);
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.10));
+    box-shadow: var(--shadow, 0 18px 55px rgba(0, 0, 0, 0.55));
+    transform: scale(0.97);
+    transition: transform 0.28s ease;
+}
+
+#game-overlay.is-open .game-overlay-frame {
+    transform: scale(1);
+}
+
+.game-overlay-frame.is-portrait {
+    /* Same reasoning as the default width above, just for 9:16. */
+    width: min(480px, 100%, calc((100vh - 64px) * 9 / 16));
+    max-height: calc(100vh - 64px);
+    aspect-ratio: 9 / 16;
+}
+
+.game-overlay-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+
+    touch-action: none;
+}
+
+.game-overlay-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.10));
+    background: rgba(10, 12, 20, 0.75);
+    backdrop-filter: blur(4px);
+    color: var(--text, rgba(255, 255, 255, 0.92));
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.game-overlay-close:hover {
+    background: var(--accent, #ff8a65);
+    color: #1a1a1a;
+    transform: scale(1.06);
+}
+
+.game-overlay-settings {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+/* The gear of the Android menu (first cell of menuIcons.png), kept sharp. */
+.game-overlay-settings img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    image-rendering: pixelated;
+}
+
+/* [hidden] alone loses to the plain .game-overlay-settings rule above (equal
+   specificity, declared later) - this pairs the attribute with the class for
+   higher specificity so game-embed.js can actually hide the gear when the
+   loaded game isn't Last Wing (see its own comment on this attribute). */
+.game-overlay-settings[hidden] {
+    display: none;
+}
+
+.game-overlay-settings:hover {
+    transform: scale(1.08) rotate(20deg);
+}
+
+#game-settings-panel {
+    position: absolute;
+    top: 68px;
+    left: 12px;
+    z-index: 2;
+    background: rgba(10, 12, 20, 0.92);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.10));
+    border-radius: 10px;
+    padding: 16px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+#game-settings-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Sits above the iframe (a plain, unpositioned element - any positioned
+   sibling already paints above it regardless of z-index) but below the
+   gear/close buttons and the panel itself. Only intercepts clicks while the
+   panel is open: a click anywhere on the visible game area then closes the
+   panel and resumes play instead of reaching the iframe underneath. */
+#game-settings-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#game-settings-backdrop.is-active {
+    pointer-events: auto;
+}
+
+#game-settings-panel h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text, rgba(255, 255, 255, 0.92));
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.settings-row:last-child {
+    margin-bottom: 0;
+}
+
+.settings-row label {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text, rgba(255, 255, 255, 0.85));
+}
+
+.settings-row input[type="range"] {
+    width: 90px;
+}
+
+.settings-row .settings-mute-btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.10));
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text, rgba(255, 255, 255, 0.85));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.settings-row .settings-mute-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.settings-row .settings-mute-btn.is-muted {
+    background: var(--accent, #ff8a65);
+    color: #1a1a1a;
+}
+
+/* Volume-bar indicator (the two small rects next to the speaker cone in the
+   SVG - see index.html/pages/last-wing.html) - all three start hidden.
+   [data-level] (set by shmup-settings.js's volumeLevel(), volume alone -
+   nothing to do with mute) reveals however many bars match the current
+   volume: 0 at 0%, 1 at/under half, 2 above half - but only while NOT muted
+   (:not(.is-muted)): muted hides the bars regardless of level and shows the
+   cross instead (below), rather than the two ever mixing - a muted button
+   reads as muted even if the last volume before muting was high. fill is
+   inherited from .settings-mute-btn svg's own fill:currentColor above, so
+   only opacity needs toggling here. */
+.settings-row .settings-mute-btn .vol-bar-1,
+.settings-row .settings-mute-btn .vol-bar-2,
+.settings-row .settings-mute-btn .vol-cross {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.settings-row .settings-mute-btn[data-level="1"]:not(.is-muted) .vol-bar-1 {
+    opacity: 1;
+}
+
+.settings-row .settings-mute-btn[data-level="2"]:not(.is-muted) .vol-bar-1,
+.settings-row .settings-mute-btn[data-level="2"]:not(.is-muted) .vol-bar-2 {
+    opacity: 1;
+}
+
+/* Cross (see the SVG's vol-cross rects) - muted only, independent of
+   volume/level: this is "sound off" (the mute toggle), not "volume at 0%",
+   which instead shows no bars and no cross (see above) - two different
+   states the icon needs to tell apart. */
+.settings-row .settings-mute-btn.is-muted .vol-cross {
+    opacity: 1;
+}
+
+#game-result-popup {
+    display: flex;
+    position: fixed;
+    z-index: 3100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 3, 8, 0.75);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+    padding: 24px;
+}
+
+#game-result-popup.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+#game-mobile-notice {
+    display: flex;
+    position: fixed;
+    z-index: 3100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 3, 8, 0.75);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+    padding: 24px;
+}
+
+#game-mobile-notice.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+#game-desktop-notice {
+    display: flex;
+    position: fixed;
+    z-index: 3100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 3, 8, 0.75);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+    padding: 24px;
+}
+
+#game-desktop-notice.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.game-result-card {
+    width: min(420px, 100%);
+    background: var(--bg1, #0b0f1f);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.10));
+    border-radius: 14px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow, 0 18px 55px rgba(0, 0, 0, 0.55));
+    transform: translateY(8px);
+    transition: transform 0.24s ease;
+}
+
+#game-result-popup.is-open .game-result-card {
+    transform: translateY(0);
+}
+
+/* Demo end screen only (see game-embed.js's isDemoContext) - a bit wider
+   and a smaller line for the thank-you sentence so it has a real chance to
+   fit on one line instead of wrapping mid-phrase; not forced with
+   white-space: nowrap, since on a narrow/mobile viewport this card is never
+   wider than the screen and nowrap would just clip the text instead. */
+.game-result-card.is-demo {
+    width: min(480px, 100%);
+}
+
+.game-result-card.is-demo .game-result-demo-line {
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.game-result-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    color: var(--text, rgba(255, 255, 255, 0.92));
+}
+
+.game-result-card h3.is-win {
+    color: var(--brand, #4da3ff);
+}
+
+.game-result-card h3.is-loss {
+    color: var(--accent, #ff8a65);
+}
+
+.game-result-card p {
+    color: var(--muted, rgba(255, 255, 255, 0.70));
+    margin-bottom: 24px;
+}
+
+.game-result-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.game-result-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    /* Some of these are <a> tags (the discover-mode link), not <button>s -
+       without this they'd show the browser's default link underline that
+       the button-styled ones never get. */
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.game-result-actions .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Same reasoning as .game-overlay-settings[hidden] above: pairs [hidden]
+   with the class it's actually declared on for enough specificity to beat
+   .btn's own display:inline-flex - lets game-embed.js toggle the demo-end
+   "discover solo/duo" buttons vs the normal retry button with plain
+   element.hidden instead of a dedicated show/hide class. */
+.game-result-actions .btn[hidden] {
+    display: none;
+}
+
+.game-result-actions .btn-primary {
+    background: linear-gradient(90deg, rgba(77,163,255,0.95), rgba(77,163,255,0.75));
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(77, 163, 255, 0.25);
+}
+
+.game-result-actions .btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border, rgba(255, 255, 255, 0.10));
+    color: var(--text, rgba(255, 255, 255, 0.92));
+}
+
+.game-result-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.play-project-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    border: none;
+    background: var(--primary-color, var(--brand, #3b82f6));
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-project-button:hover {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.play-project-button svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+}
+
+.play-project-button--secondary {
+    background: transparent;
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.16));
+    color: var(--text, rgba(255, 255, 255, 0.92));
+    box-shadow: none;
+    margin-top: 10px;
+}
+
+.play-project-button--secondary svg {
+    fill: currentColor;
+}
+
+@media (pointer: coarse), (max-width: 640px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+.hide-on-desktop {
+    display: none;
+}
+
+@media (pointer: coarse), (max-width: 640px) {
+    .hide-on-desktop {
+        display: inline-flex !important;
+    }
+}
+
+@media (max-width: 640px) {
+    #game-overlay {
+        padding: 12px;
+    }
+
+    .game-overlay-frame,
+    .game-overlay-frame.is-portrait {
+        max-height: calc(100vh - 24px);
+    }
+
+    .game-overlay-close {
+        top: 8px;
+        right: 8px;
+    }
+
+    .game-overlay-settings {
+        top: 8px;
+        left: 8px;
+    }
+
+    #game-settings-panel {
+        top: 64px;
+        left: 8px;
+    }
+}

@@ -1,0 +1,635 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #43424b;
+    --card-bg: #232020;
+    --text-color: #ffffff;
+    --secondary-text: #aaaaaa;
+    --primary-color: #4da3ff;
+    --accent-color: #ff8a65;
+}
+
+body[data-theme="engine"] {
+    --bg-color: #0f172a;
+    --card-bg: #111827;
+    --primary-color: #3b82f6;
+}
+
+body[data-theme="escape"] {
+    --bg-color: #301f1a;
+    --card-bg: #2a1b1b;
+    --primary-color: #ff4d4d;
+}
+
+body[data-theme="pokemon"] {
+    --bg-color: #0b1222;
+    --card-bg: #0f1a33;
+    --text-color: #ffffff;
+    --secondary-text: rgba(255, 255, 255, 0.72);
+    --primary-color: #ffd84d;
+}
+
+body[data-theme="gametalk"] {
+    --bg-color: #0b0b14;
+    --card-bg: #151529;
+    --text-color: #ffffff;
+    --secondary-text: rgba(255, 255, 255, 0.72);
+    --primary-color: #a78bfa;
+}
+
+body[data-theme="nightlife"] {
+    --bg-color: #070611;
+    --card-bg: #120b24;
+    --text-color: #ffffff;
+    --secondary-text: rgba(255, 255, 255, 0.72);
+    --primary-color: #ff4fd8;
+}
+
+body[data-theme="platypus"] {
+    --bg-color: #373068;
+    --card-bg: #241d3a;
+    --text-color: #a8b0d6;
+    --secondary-text: #eabb99;
+    --primary-color: #f2946b;
+}
+
+body[data-theme="engine3d"] {
+    --bg-color: #0c1220;
+    --card-bg: #111827;
+    --primary-color: #22d3ee;
+}
+
+body[data-theme="lifeawake"] {
+    --bg-color: #13275e;
+    --card-bg: #1c3374;
+    --primary-color: #8ed45a;
+}
+
+body[data-theme="prototype"] {
+    --bg-color: #0f1419;
+    --card-bg: #151b22;
+    --primary-color: #0ea5e9;
+}
+
+body[data-theme="shmup"] {
+    /* Every color here is sampled from the project's own logo
+       (static/img/LastWingMobile.png/LastWingPC.png), not invented:
+       --primary-color is the logo's orange/ochre "SHOOTER" text - light blue
+       was tried here first, but 3D Game Engine's own theme already uses a
+       near-identical sky blue (#22d3ee, see all-work.html), so this frees
+       that color up and gives Last Wing its own distinct identity.
+       --accent-color is the game's own play-area green (#b6d53c) - it used
+       to be --primary-color, but that put it directly on top of the
+       identical green in every screenshot thumbnail (all-work.html/
+       index.html's "▶ VOIR" hover), reading as camouflaged, illegible text.
+       Scoped down to just the tech-badge borders here instead (see below),
+       it still reads clearly as "this page's own green" without repeating
+       that mistake. --bg-color/--card-bg take the logo's own dark navy box
+       color (the light blue's natural, muted-dark home) - the old near-black
+       background didn't tie back to anything in the project; this does,
+       without being the green that would fight the "▶ VOIR" fix above. */
+    --bg-color: #0a1226;
+    --card-bg: #16233d;
+    --primary-color: #fdba74;
+    --accent-color: #b6d53c;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: var(--card-bg);
+    padding: 16px 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background-color: var(--card-bg);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.project-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+.project-left {
+    flex: 1;
+    max-width: 600px;
+}
+
+.project-left h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+}
+
+.project-left p {
+    margin-bottom: 20px;
+}
+
+.project-left h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.project-left ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.links {
+    margin-top: 10px;
+}
+
+.links a {
+    display: inline-block;
+    margin-right: 16px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* The Copyright section's music-credit link, in this page's own green
+   (see the shmup theme's own comment above) - it's otherwise a bare <a>
+   with no styling of its own (unlike .links a above), so without this it
+   would just render as the browser's default link blue. */
+body[data-theme="shmup"] .copyright-note a {
+    color: var(--accent-color);
+}
+
+.project-right {
+    max-width: 36%;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 88px;
+    align-self: flex-start;
+}
+
+.media-images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.media-item img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.demo-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 48vh;
+    max-width: 270px;
+    margin: 0 auto;
+    /* contain, not cover: the actual recording already matches this box's
+       9:16 ratio exactly, so contain changes nothing for it - but the poster
+       (LastWing.png, square) would otherwise get ~44% of its
+       width cover-cropped away before the video starts playing. contain
+       letterboxes it instead (centered, against the same black background
+       below), showing the full logo. */
+    object-fit: contain;
+    border-radius: 10px;
+    background: #000;
+}
+
+.demo-video:fullscreen,
+.demo-video:-webkit-full-screen {
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+}
+
+.demo-video-actions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto;
+    width: max-content;
+    max-width: 100%;
+}
+
+.demo-video-actions .play-project-button span {
+    white-space: nowrap;
+}
+
+.media-item img:hover {
+    transform: scale(1.02);
+}
+
+.media-item .play-project-button {
+    margin-top: 10px;
+}
+
+/* The solo/duo mode buttons pick a mode, neither is more "primary" than the
+   other, so they shouldn't read as one filled/one outlined anymore - both
+   get this page's own accent green as background and its own primary
+   orange as text/icon, overriding whichever of the two variant classes
+   (.play-project-button / --secondary) each one happens to carry. A black
+   text outline (stroke + a 4-direction shadow fallback for browsers without
+   -webkit-text-stroke) keeps the orange text readable against the green. */
+.demo-video-actions .play-project-button,
+.demo-video-actions .play-project-button--secondary {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.demo-video-actions .play-project-button svg {
+    fill: currentColor;
+}
+
+.tech-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tech-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-color);
+}
+
+/* This page's own second accent (the game's own green, see the shmup
+   theme's own comment above) - every other theme leaves badges in the
+   generic grey/white above, since only this one has a second accent to
+   spend. */
+body[data-theme="shmup"] .tech-badge {
+    border-color: rgba(182, 213, 60, 0.35);
+    color: var(--accent-color);
+}
+
+.tech-note {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left: 3px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.diagram-wrap {
+    margin: 16px 0 24px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.diagram-wrap svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.code-snippet {
+    margin: 12px 0 20px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: ui-monospace, 'Cascadia Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-x: auto;
+    color: rgba(255, 255, 255, 0.88);
+    white-space: pre;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 18px 20px;
+    margin: 0;
+}
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.timeline strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.timeline span {
+    font-size: 14px;
+    color: var(--secondary-text);
+}
+
+.media-item {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-thumbs {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.video-thumb {
+    flex: 1;
+    min-width: 72px;
+    max-width: 120px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background: none;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.video-thumb.active,
+.video-thumb:hover {
+    opacity: 1;
+    border-color: var(--primary-color);
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 56px;
+    object-fit: cover;
+    display: block;
+}
+
+#image-modal {
+    display: flex;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+    padding: 24px;
+}
+
+#image-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+#modal-img {
+    max-width: 92%;
+    max-height: 90%;
+    border-radius: 10px;
+    transform: scale(0.96);
+    transition: transform 0.28s ease;
+}
+
+#image-modal.is-open #modal-img {
+    transform: scale(1);
+}
+
+.media-video {
+    width: 100%;
+}
+
+.video-viewer {
+    position: relative;
+}
+
+.video-slide {
+    display: none;
+}
+
+.video-slide.active {
+    display: block;
+}
+
+.video-slide video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.prev-video,
+.next-video {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 22px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.prev-video { left: 10px; }
+.next-video { right: 10px; }
+
+.prev-video:hover,
+.next-video:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.prev:hover,
+.next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.section-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.section-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.site-footer {
+    margin-top: 60px;
+    padding: 40px 0 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+}
+
+.footer-meta {
+    font-size: 12px;
+    color: var(--secondary-text);
+}
+
+@media (max-width: 900px) {
+    .project-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 40px auto;
+    }
+
+    .project-left,
+    .project-right {
+        max-width: 100%;
+        min-width: 0;
+        position: static;
+    }
+
+    .prev-video,
+    .next-video,
+    .prev,
+    .next {
+        padding: 12px 16px;
+        font-size: 26px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+}

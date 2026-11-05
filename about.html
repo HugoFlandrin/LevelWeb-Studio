@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="about.meta.title">About - LevelWeb Studio</title>
+    <meta name="description" content="About LevelWeb Studio, an independent game studio.">
+    <link rel="icon" type="image/png" href="static/img/Logo.png">
+    <link rel="stylesheet" href="static/css/studio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="studio-header">
+    <div class="container studio-header-inner">
+        <a href="index.html" class="studio-brand">
+            <img src="static/img/Logo.png" alt="">
+            <span>LevelWeb Studio<small data-i18n="studio.tagline">Indie game studio</small></span>
+        </a>
+        <nav class="studio-nav">
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
+        </nav>
+    </div>
+</header>
+
+<main class="main-grow">
+    <div class="container">
+        <div class="page">
+            <div class="about-intro">
+                <img class="about-logo" src="static/img/LogoWithName.png" alt="LevelWeb Studio logo">
+                <div>
+                    <h1 data-i18n="about.title">About the studio</h1>
+                    <p data-i18n="about.body1">LevelWeb Studio is an independent game studio created by Hugo Flandrin.</p>
+                    <p data-i18n="about.body2">Last Wing is its first game: a shoot-'em-up built on a custom C++ engine, compiled to WebAssembly for the web version.</p>
+                </div>
+            </div>
+
+            <section class="about-card">
+                <h2 data-i18n="about.devTitle">Behind the scenes</h2>
+                <p data-i18n="about.devBody">Curious about how it is made? The technical breakdown lives in the developer's portfolio.</p>
+                <div class="about-links">
+                    <a href="portfolio/pages/last-wing.html" data-i18n="about.devLink">Technical breakdown of Last Wing</a>
+                    <a href="portfolio/index.html" data-i18n="about.portfolioLink">Hugo Flandrin's portfolio</a>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer class="studio-footer">
+    <div class="container studio-footer-inner">
+        <div class="footer-links">
+            <a href="about.html" data-i18n="footer.about">About</a>
+            <a href="last-wing/privacy/" data-i18n="footer.privacy">Privacy policy</a>
+            <a href="mentions-legales.html" data-i18n="footer.legal">Legal notice</a>
+        </div>
+        <a href="portfolio/index.html" data-i18n="footer.dev">Developed by Hugo Flandrin</a>
+    </div>
+</footer>
+
+<script src="static/js/studio-i18n.js"></script>
+</body>
+</html>
