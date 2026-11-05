@@ -218,10 +218,18 @@
   // finished booting (see shell-shmup.html's onRuntimeInitialized) - each
   // open/replay spins up a brand-new wasm instance at its audio defaults,
   // since game-embed.js reassigns frame.src fresh every time.
+  let shown = false;      // the game has shown itself (after its loading bar)
+  let available = true;   // the game wants the settings button (not during a run)
   window.addEventListener("message", (event) => {
     const data = event.data;
     if (data?.type === "shmupReady") {
+      shown = false;
+      available = true;
       applyAll();
+    } else if (data?.type === "shmupShown") {
+      // The game has shown itself (its loading bar is gone): the settings button comes with it, if the game has a use for it.
+      shown = true;
+      gear.hidden = !available;
     } else if (data?.type === "shmupSettingsAvailable") {
       // The game has its own start screen and pause button (solo mode): this button is there on the start screen alone.
       if (!data.value && panel.classList.contains("is-open")) {
@@ -229,7 +237,8 @@
         panel.setAttribute("aria-hidden", "true");
         backdrop.classList.remove("is-active");
       }
-      gear.hidden = !data.value;
+      available = !!data.value;
+      gear.hidden = !available || !shown;
     } else if (data?.type === "shmupAudio") {
       // A volume was changed on the game's own pause screen: the sliders and what is remembered follow, so both
       // places always show (and keep) the same setting.
