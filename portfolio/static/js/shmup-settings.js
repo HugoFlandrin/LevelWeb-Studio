@@ -126,14 +126,110 @@
     send("setSfxMuted", state.sfxMuted);
   });
 
+  // ---- The two-player mode (see CoopRun in the game): "add a player" brings the game's start screen back with a second ship.
+  const playersBtn = document.getElementById("game-players-btn");
+  const playersInfo = document.getElementById("game-players-info");
+  const playersDialog = document.getElementById("game-players-dialog");
+  if (playersBtn && playersInfo && playersDialog) {
+    const lang = () => (window.__i18n?.getLang?.() ?? document.documentElement.lang ?? "en") === "fr" ? "fr" : "en";
+    const texts = {
+      en: {
+        title: "2-player mode",
+        lines: [
+          "Play together on the same keyboard, in every game mode. The difficulty adapts: enemies and bosses are tougher.",
+          "Both players share a single life bar: when it reaches zero, you both die.",
+          "Every boost one player catches is applied to both of you.",
+          "If either of you hits an enemy, you both die.",
+        ],
+        player1: "Player 1", player2: "Player 2", letters: ["W", "A", "S", "D"], arrows: "Arrow keys",
+        pcTitle: "A computer is needed",
+        pcBody: "The 2-player mode is played on a computer, with a keyboard: both players share it. Open the game on a PC to play with a friend.",
+        add: "Add a player", remove: "Remove player 2",
+      },
+      fr: {
+        title: "Mode 2 joueurs",
+        lines: [
+          "Jouez à deux sur le même clavier, dans tous les modes de jeu. La difficulté s\u2019adapte : les ennemis et les boss sont plus résistants.",
+          "Les deux joueurs partagent une seule barre de vie : quand elle tombe à zéro, vous mourez tous les deux.",
+          "Chaque boost ramassé par un joueur est appliqué aux deux.",
+          "Si l’un de vous percute un ennemi, vous mourez tous les deux.",
+        ],
+        player1: "Joueur 1", player2: "Joueur 2", letters: ["Z", "Q", "S", "D"], arrows: "Flèches directionnelles",
+        pcTitle: "Un ordinateur est nécessaire",
+        pcBody: "Le mode 2 joueurs se joue sur ordinateur, avec un clavier : les deux joueurs le partagent. Ouvrez le jeu sur PC pour jouer à deux.",
+        add: "Ajouter un joueur", remove: "Retirer le joueur 2",
+      },
+    };
+    const dialogTitle = document.getElementById("game-players-dialog-title");
+    const dialogBody = document.getElementById("game-players-dialog-body");
+    const dialogClose = document.getElementById("game-players-dialog-close");
+    // Same test as game-embed.js: a touch screen (or a very narrow window) is not a computer with a keyboard.
+    const isPc = () =>
+      !window.matchMedia("(pointer: coarse)").matches &&
+      window.matchMedia("(pointer: fine)").matches &&
+      !window.matchMedia("(max-width: 640px)").matches;
+    let twoPlayers = false;
+
+    const refreshButton = () => {
+      const t = texts[lang()];
+      playersBtn.textContent = twoPlayers ? t.remove : t.add;
+      playersBtn.classList.toggle("is-on", twoPlayers);
+    };
+    const keysLine = (label, keys) => `<p><strong>${label}</strong> : ${keys.map((k) => `<kbd>${k}</kbd>`).join("")}</p>`;
+    const openDialog = (title, html) => {
+      dialogTitle.textContent = title;
+      dialogBody.innerHTML = html;
+      playersDialog.classList.add("is-open");
+    };
+    refreshButton();
+    // The language can change while the page is open: the label follows (checked when the panel opens).
+    gear.addEventListener("click", refreshButton);
+
+    playersBtn.addEventListener("click", () => {
+      if (!isPc()) {
+        closeSettings();
+        const t = texts[lang()];
+        openDialog(t.pcTitle, `<p>${t.pcBody}</p>`);
+        return;
+      }
+      twoPlayers = !twoPlayers;
+      refreshButton();
+      send("setPlayers", twoPlayers ? 2 : 1);
+      closeSettings();
+    });
+    playersInfo.addEventListener("click", () => {
+      const t = texts[lang()];
+      openDialog(t.title, `<ul>${t.lines.map((line) => `<li>${line}</li>`).join("")}</ul>` + keysLine(t.player1, t.letters) + keysLine(t.player2, [t.arrows]));
+    });
+    dialogClose?.addEventListener("click", () => playersDialog.classList.remove("is-open"));
+    playersDialog.addEventListener("click", (e) => {
+      if (e.target === playersDialog) playersDialog.classList.remove("is-open");
+    });
+    // Each open of the game is a new instance: it starts with one player.
+    new MutationObserver(() => {
+      if (!document.getElementById("game-overlay")?.classList.contains("is-open")) {
+        twoPlayers = false;
+        refreshButton();
+      }
+    }).observe(document.getElementById("game-overlay"), { attributes: true, attributeFilter: ["class"] });
+  }
+
   // Re-applies the stored preferences every time the game announces it
   // finished booting (see shell-shmup.html's onRuntimeInitialized) - each
   // open/replay spins up a brand-new wasm instance at its audio defaults,
   // since game-embed.js reassigns frame.src fresh every time.
+  let shown = false;      // the game has shown itself (after its loading bar)
+  let available = true;   // the game wants the settings button (not during a run)
   window.addEventListener("message", (event) => {
     const data = event.data;
     if (data?.type === "shmupReady") {
+      shown = false;
+      available = true;
       applyAll();
+    } else if (data?.type === "shmupShown") {
+      // The game has shown itself (its loading bar is gone): the settings button comes with it, if the game has a use for it.
+      shown = true;
+      gear.hidden = !available;
     } else if (data?.type === "shmupSettingsAvailable") {
       // The game has its own start screen and pause button (solo mode): this button is there on the start screen alone.
       if (!data.value && panel.classList.contains("is-open")) {
@@ -141,7 +237,8 @@
         panel.setAttribute("aria-hidden", "true");
         backdrop.classList.remove("is-active");
       }
-      gear.hidden = !data.value;
+      available = !!data.value;
+      gear.hidden = !available || !shown;
     } else if (data?.type === "shmupAudio") {
       // A volume was changed on the game's own pause screen: the sliders and what is remembered follow, so both
       // places always show (and keep) the same setting.

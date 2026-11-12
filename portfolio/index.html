@@ -122,7 +122,7 @@
                     <h2 data-i18n="home.featured.title">Featured project</h2>
                 </div>
                 <article class="featured-card">
-                    <a href="pages/last-wing.html" class="featured-media" id="featured-play-trigger" data-game-trigger data-game-src="../static/last-wing/index.html?mode=score" data-game-aspect="portrait" data-game-demo="true">
+                    <a href="pages/last-wing.html" class="featured-media" id="featured-play-trigger" data-game-trigger data-game-src="../static/last-wing/index.html?mode=infinite-solo" data-game-aspect="portrait">
                         <img class="featured-media-img--desktop" src="static/img/LastWing.png" alt="Last Wing demo - click or tap to play">
                         <img class="featured-media-img--mobile" src="static/img/LastWing.png" alt="Last Wing demo - click or tap to play">
                         <span class="featured-tag" data-i18n="home.featured.tag">Engine · C++ · SFML · Box2D</span>
@@ -351,13 +351,25 @@
                         <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><rect class="vol-bar-1" x="14.5" y="8.5" width="2.4" height="7" rx="1.2"/><rect class="vol-bar-2" x="18.5" y="5.5" width="2.4" height="13" rx="1.2"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(45 18.5 12)"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(-45 18.5 12)"/></svg>
                     </button>
                 </div>
+                <div class="settings-row players-row" id="game-players-row">
+                    <button type="button" id="game-players-btn" class="players-btn" data-i18n="project.shmup.addPlayer">Add a player</button>
+                    <button type="button" id="game-players-info" class="players-info" data-i18n-aria-label="project.shmup.playersInfo" aria-label="About the 2-player mode">i</button>
+                </div>
             </div>
             <div id="game-settings-backdrop"></div>
             <iframe id="game-frame" title="2D Game Engine - playable demo"></iframe>
         </div>
     </div>
 
-    <div id="game-result-popup" aria-hidden="true">
+    <div id="game-players-dialog" role="dialog" aria-modal="true">
+    <div class="card">
+        <h3 id="game-players-dialog-title"></h3>
+        <div id="game-players-dialog-body"></div>
+        <button type="button" class="close" id="game-players-dialog-close" data-i18n="home.featured.closeGame">Close</button>
+    </div>
+</div>
+
+<div id="game-result-popup" aria-hidden="true">
         <div class="game-result-card">
             <h3 id="game-result-title"></h3>
             <p id="game-result-score"></p>

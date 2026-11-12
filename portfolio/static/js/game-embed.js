@@ -145,7 +145,8 @@
     // other game is loaded instead.
     const settingsToggle = document.getElementById("game-settings-toggle");
     if (settingsToggle) {
-      settingsToggle.hidden = !activeSrc.includes("last-wing");
+      // (Hidden while the game loads: the game says when it shows itself - see shmup-settings.js.)
+      settingsToggle.hidden = true;
     }
 
     // Opened (and thus laid out/sized) BEFORE measuring the frame below -

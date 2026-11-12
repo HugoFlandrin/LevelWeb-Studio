@@ -288,8 +288,8 @@
       "project.engine.t2.body": "Box2D integration, movement, collisions, basic enemies",
       "project.engine.t3.title": "Phase 3 - Content & UI",
       "project.engine.t3.body": "Two levels, menus, score/timer, game over flow",
-      "project.engine.playSpaceShooter": "Play the Last Wing demo",
-      "project.engine.playButton": "Play the bonus demo (platformer)",
+      "project.engine.playSpaceShooter": "Play Last Wing",
+      "project.engine.playButton": "Play the platformer",
       "project.engine.platformerBonus":
         "The engine's original platformer demo is still included too, kept as a bonus: the concrete scenario (movement, collisions, enemies, levels, UI) the core systems were first built and tested against.",
       "project.engine.mobileCta": "Try Last Wing instead",
@@ -326,7 +326,7 @@
         "A power-up system (faster fire, multi-shot, shield, heal) and a full Emscripten/WebAssembly web port",
       "project.shmup.built4":
         "Engine-side additions the game needed: per-player scoring, a reusable damage-immunity flag, and safe inert-entity handling",
-      "project.shmup.playButtonSolo": "Last Wing (solo)",
+      "project.shmup.playButtonSolo": "Play Last Wing",
       "project.shmup.engineLink": "Engine project",
       "project.shmup.studioLink": "Game page",
       "project.shmup.settingsAriaLabel": "Audio settings",
@@ -335,6 +335,9 @@
       "project.shmup.sfxLabel": "Sound effects",
       "project.shmup.muteMusicAriaLabel": "Mute music",
       "project.shmup.muteSfxAriaLabel": "Mute sound effects",
+      "project.shmup.addPlayer": "Add a player",
+      "project.shmup.removePlayer": "Remove player 2",
+      "project.shmup.playersInfo": "About the 2-player mode",
 
       "project.engine3d.subtitle":
         "A C++ 3D game engine built with OpenGL - modular rendering architecture validated through a basic demo scene.",
@@ -791,8 +794,8 @@
       "project.engine.t2.body": "Intégration Box2D, déplacements, collisions, ennemis basiques",
       "project.engine.t3.title": "Phase 3 - Contenu & UI",
       "project.engine.t3.body": "Deux niveaux, menus, score/timer, flux game over",
-      "project.engine.playSpaceShooter": "Jouer à la démo de Last Wing",
-      "project.engine.playButton": "Jouer à la démo bonus (platformer)",
+      "project.engine.playSpaceShooter": "Jouer à Last Wing",
+      "project.engine.playButton": "Jouer au platformer",
       "project.engine.platformerBonus":
         "La démo platformer d'origine du moteur reste également incluse, conservée en bonus : le scénario concret (déplacements, collisions, ennemis, niveaux, interface) sur lequel les systèmes du moteur ont d'abord été construits et testés.",
       "project.engine.mobileCta": "Essayer Last Wing à la place",
@@ -829,7 +832,7 @@
         "Un système de boost (tir rapide, tir multiple, bouclier, soin) et un portage web complet en Emscripten/WebAssembly",
       "project.shmup.built4":
         "Ajouts côté moteur nécessaires au jeu : score par joueur, un flag d'immunité réutilisable, et une gestion sûre des entités inertes",
-      "project.shmup.playButtonSolo": "Last Wing (solo)",
+      "project.shmup.playButtonSolo": "Jouer à Last Wing",
       "project.shmup.engineLink": "Projet du moteur",
       "project.shmup.studioLink": "Page du jeu",
       "project.shmup.settingsAriaLabel": "Réglages audio",
@@ -838,6 +841,9 @@
       "project.shmup.sfxLabel": "Effets sonores",
       "project.shmup.muteMusicAriaLabel": "Couper la musique",
       "project.shmup.muteSfxAriaLabel": "Couper les effets sonores",
+      "project.shmup.addPlayer": "Ajouter un joueur",
+      "project.shmup.removePlayer": "Retirer le joueur 2",
+      "project.shmup.playersInfo": "À propos du mode 2 joueurs",
 
       "project.engine3d.subtitle":
         "Un moteur de jeu 3D en C++ avec OpenGL - architecture de rendu modulaire validée par une scène de démo basique.",

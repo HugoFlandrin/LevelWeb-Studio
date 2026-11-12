@@ -123,7 +123,7 @@
             <div class="demo-video-actions">
                 <button type="button" class="play-project-button play-project-button--secondary" style="margin-top:0" data-game-trigger data-game-src="../../static/last-wing/index.html?mode=infinite-solo" data-game-aspect="portrait">
                     <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <span data-i18n="project.shmup.playButtonSolo">Last Wing (solo)</span>
+                    <span data-i18n="project.shmup.playButtonSolo">Play Last Wing</span>
                 </button>
             </div>
         </div>
@@ -172,9 +172,21 @@
                     <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><rect class="vol-bar-1" x="14.5" y="8.5" width="2.4" height="7" rx="1.2"/><rect class="vol-bar-2" x="18.5" y="5.5" width="2.4" height="13" rx="1.2"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(45 18.5 12)"/><rect class="vol-cross" x="14.5" y="11" width="8" height="2" rx="1" transform="rotate(-45 18.5 12)"/></svg>
                 </button>
             </div>
+            <div class="settings-row players-row" id="game-players-row">
+                <button type="button" id="game-players-btn" class="players-btn" data-i18n="project.shmup.addPlayer">Add a player</button>
+                <button type="button" id="game-players-info" class="players-info" data-i18n-aria-label="project.shmup.playersInfo" aria-label="About the 2-player mode">i</button>
+            </div>
         </div>
         <div id="game-settings-backdrop"></div>
         <iframe id="game-frame" title="Last Wing - playable game"></iframe>
+    </div>
+</div>
+
+<div id="game-players-dialog" role="dialog" aria-modal="true">
+    <div class="card">
+        <h3 id="game-players-dialog-title"></h3>
+        <div id="game-players-dialog-body"></div>
+        <button type="button" class="close" id="game-players-dialog-close" data-i18n="home.featured.closeGame">Close</button>
     </div>
 </div>
 
